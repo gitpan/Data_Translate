@@ -69,7 +69,7 @@ METHODS
  Translate from ascii to hexadecimal
  Ex.:
 
-   ($s,@hh)=$data->a2h($str);
+   ($s,$hh)=$data->a2h($str);
 
 ->b2a
  Translate from binary to ascii

@@ -1,7 +1,7 @@
 package Data::Translate;
 
 use vars qw($VERSION);
-$VERSION = '0.1';
+$VERSION = '0.2';
 
 require Exporter;
 @ISA       = qw(Exporter);
@@ -81,13 +81,11 @@ sub d2a {
 
 sub d2h {
   shift;
-  local (@dec)=@_;
-  for ($i=0;$i<=$#dec;$i++) {
-    $dec[$i]=unpack("H*", pack("N",$dec[$i]));
-    $dec[$i]=~s/0*(?=\S{2}$)//g;
-  }
-  return 1,@dec;
+  local $t=join("",@_);
+  local $tt=sprintf("%lx", $t);
+  return 1,$tt;
 }
+
 
 #HEX
 sub h2b {
@@ -193,7 +191,7 @@ __END__
  Translate from ascii to hexadecimal
   Ex.:
 
-   ($s,@hh)=$data->a2h($str);
+   ($s,$hh)=$data->a2h($str);
 
 =item C<-E<gt>b2a>
  Translate from binary to ascii

@@ -1,7 +1,7 @@
 package Data::Translate;
 
 use vars qw($VERSION);
-$VERSION = '0.2';
+$VERSION = '0.3';
 
 require Exporter;
 @ISA       = qw(Exporter);
@@ -101,7 +101,7 @@ sub h2d {
   shift;
   local (@hex)=@_;my $i;
   for ($i=0;$i<=$#hex;$i++) {
-    $hex[$i]=ord(unpack("A",  pack("H*", $hex[$i])));
+    $hex[$i]=ord(pack("H*", $hex[$i]));
   }
   return 1,@hex;
 }
